@@ -722,6 +722,7 @@ define(["jquery", "underscore-min",
 
 
         MizarWidgetAPI.prototype.createMarsContext = function() {
+            console.log("createMarsContext");
             this.unsubscribeCtx(Mizar.EVENT_MSG.BASE_LAYERS_READY, RenderingGlobeFinished);
             $(mizarDiv).find('#loading').show();
             var userOptions = this.options;
