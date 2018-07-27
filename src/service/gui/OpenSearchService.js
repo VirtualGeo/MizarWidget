@@ -171,6 +171,7 @@ define(["jquery", "underscore-min", "text!templates/openSearchService.html", "te
 
                 var openSearchService = openSearchServiceTemplate({layers: layers});
 
+                console.log("ICI",openSearchService);
                 //console.log("FORM",$(openSearchService).find(".datetimepicker"));
                 $(openSearchService)
                     .appendTo('#OpenSearchService')

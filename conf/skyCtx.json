@@ -49,7 +49,7 @@
       },
       "visible": false,
       "pickable": false,
-      "color": "rgb(8, 59, 167)",
+      "color": "rgb(240, 159, 167)",
       "dataType": "Point"
     },
     {
@@ -99,7 +99,7 @@
      *    Plugin: Proxy Healpix Image cache
      *    urlClient: http://alasky.u-strasbg.fr or http://healpix.ias.u-psud.fr/
      */
-    {
+    /*{
       "type": "Hips",
       "name": "IRIS",
       "baseUrl": "http://alasky.unistra.fr/IRISColor",
@@ -117,7 +117,7 @@
       "icon": "css/images/star_icon.png",
       "visible": false,
       "background": true
-    },
+    },*/
     /**
      *    Healpix grid
      */

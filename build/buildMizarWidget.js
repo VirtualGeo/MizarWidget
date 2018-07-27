@@ -11,6 +11,7 @@
 			"jquery.ui": 									"../external/jquery-ui/jquery-ui.min",
 			"jquery.ui.timepicker": 			"../external/jquery.ui.timepicker/jquery.ui.timepicker",
 			"jquery.once": 								"../external/jquery-once/jquery.once.min",
+			"jquery.datetimepicker"	:					"../node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.min",
 			"underscore-min": 						"../external/underscore/underscore",
 			"jszip": 											"../external/jszip/jszip.min",
 			"saveAs": 										"../external/fileSaver/FileSaver.min",

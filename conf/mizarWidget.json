@@ -17,9 +17,9 @@
       "visible": true
     },
     "debug": true,
-    "registry": {
-      "hips" :"http://aladin.unistra.fr/hips/globalhipslist?fmt=json&hips_frame=equatorial&hips_frame=galactic"
-    },
+    /*"registry": {
+      "hips" : "http://aladin.unistra.fr/hips/globalhipslist?fmt=json&hips_frame=equatorial&hips_frame=galactic"
+    },*/
     "shortener": "${sitoolsBaseUrl}/shortener"
   },
   "ctx": [
@@ -54,5 +54,5 @@
       "context": "./sunCtx.json"
     }
   ],
-  "defaultCtx": "sky"
+  "defaultCtx": "earth"
 }
