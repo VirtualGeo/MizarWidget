@@ -183,13 +183,33 @@ require(["jquery", "underscore-min", "./MizarWidget"], function ($, _, MizarWidg
         return string;
     };
 
+    // Get URl params
+    var reg = /[?&]+([^=&]+)=?([^&]*)/gi;
+    href = window.location.search;
+    getUrlVars = function(){
+            var map = {};
+            href.replace(reg, function(match, key, value) {
+                key = decodeURIComponent(key);
+                value = value ? decodeURIComponent(value) : true;
+                map[key] ? map[key] instanceof Array ? map[key].push(value) : map[key] = [map[key], value] :  map[key] = value;
+            });
+            return map;
+    };
+    parameters = getUrlVars();
+    console.log("vars:",parameters);
+
+
     var uid = getUniqueId();
     var mizarUrl = getMizarUrl();
     var mizarWidgetConf = getUrl(mizarUrl+"/conf/mizarWidget.json?uid="+uid);
     var widgetOptions = JSON.parse(_removeComments(mizarWidgetConf));
+    if (typeof parameters.ctxurl !== 'undefined') {
+        widgetOptions.ctx[0].context = parameters.ctxurl;
+    }
 
     var mizarWidget = new MizarWidget('mizarWidget-div', widgetOptions);
     var mizarWidgetAPI = mizarWidget.getMizarWidgetAPI();
+    console.log("here");
     mizarWidgetAPI.init();
 
 });

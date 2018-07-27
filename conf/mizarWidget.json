@@ -1,6 +1,5 @@
 {
   "global": {
-    "sitoolsBaseUrl": "http://demonstrator.telespazio.com/sitools",
     "proxyUrl": "http://localhost:8080/?url=",
     "proxyUse": false,
     "displayWarning": true
@@ -16,43 +15,14 @@
     "stats": {
       "visible": true
     },
-    "debug": true,
-    "registry": {
-      "hips" :"http://aladin.unistra.fr/hips/globalhipslist?fmt=json&hips_frame=equatorial&hips_frame=galactic"
-    },
-    "shortener": "${sitoolsBaseUrl}/shortener"
+    "debug": true
   },
   "ctx": [
     {
-      "name": "sky",
-      "mode": "Sky",
-      "context": "./skyCtx.json"
-    },
-    {
-      "name": "mars",
+      "name": "regard",
       "mode": "Planet",
-      "context": "./marsCtx.json"
-    },
-    {
-      "name": "moon",
-      "mode": "Planet",
-      "context": "./moonCtx.json"
-    },
-    {
-      "name": "earth",
-      "mode": "Planet",
-      "context": "./earthCtx.json"
-    },
-    {
-      "name": "curiosity",
-      "mode": "Ground",
-      "context": "./curiosityCtx.json"
-    },
-    {
-      "name": "sun",
-      "mode": "Planet",
-      "context": "./sunCtx.json"
+      "context": "./nop.json"
     }
   ],
-  "defaultCtx": "sky"
+  "defaultCtx": "regard"
 }
