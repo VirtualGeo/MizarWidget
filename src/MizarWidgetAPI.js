@@ -293,6 +293,7 @@ define(["jquery", "underscore-min",
                 }
             });
 
+            
             // Search the reference to the default context.
             var selectedCtx = _.find(this.options.ctx, function(obj) { return obj.name === userOptions.defaultCtx });
             if(selectedCtx === undefined) {
@@ -410,7 +411,13 @@ define(["jquery", "underscore-min",
             for (var i=0; i<configCtx.length; i++) {
                 var ctx = configCtx[i];
                 // generate a unique identifier to avoid the web server puts the configuration file in cache.
-                var ctxResult = getUrl(mizarUrl+"/conf/"+ctx.context+"?uid="+uid);
+                var ctxResult;
+                if (ctx.context.toLowerCase().startsWith("http") === true) {
+                    var noCacheCharacter = (ctx.context.indexOf("?")>=0) ? "&" : "?";
+                    ctxResult = getUrl(ctx.context+noCacheCharacter+"uid="+uid);
+                } else {
+                    ctxResult = getUrl(mizarUrl+"/conf/"+ctx.context+"?uid="+uid);
+                }
                 ctx.context = JSON.parse(_removeComments(ctxResult));
                 ctxObj.push(ctx);
             }
@@ -680,6 +687,17 @@ define(["jquery", "underscore-min",
             }
         };
 
+        /**
+         * Show/hide position tracker GUI
+         * @function setPositionTrackerGui
+         * @memberof MizarWidgetAPI.prototype
+         * @param {boolean} visible
+         */
+        MizarWidgetAPI.prototype.setPositionTrackerGui = function (visible) {
+            if (this.mizarWidgetGui) {
+                this.mizarWidgetGui.setPositionTrackerGui(visible);
+            }
+        };
 
         MizarWidgetAPI.prototype.getMode = function() {
             return mizarAPI.getActivatedContext().getMode();
@@ -711,6 +729,7 @@ define(["jquery", "underscore-min",
 
 
         MizarWidgetAPI.prototype.createMarsContext = function() {
+            console.log("createMarsContext");
             this.unsubscribeCtx(Mizar.EVENT_MSG.BASE_LAYERS_READY, RenderingGlobeFinished);
             $(mizarDiv).find('#loading').show();
             var userOptions = this.options;
@@ -736,7 +755,6 @@ define(["jquery", "underscore-min",
                 });
             }
             self.mizarWidgetGui.setUpdatedActivatedContext(self.getContext());
-
         };
 
         MizarWidgetAPI.prototype.createCuriosityContext = function() {
